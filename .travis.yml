@@ -11,5 +11,5 @@ before_install:
   - gem --version
 
 script:
-  redis-server
-  ruby app.rb
+  -redis-server
+  -ruby app.rb
