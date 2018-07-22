@@ -6,4 +6,4 @@ Yet another application to make your URL shorter.
 
 Clone this repository
 Bundle install
-ruby shrturl.rb
+ruby app.rb

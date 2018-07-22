@@ -1,14 +1,7 @@
-require 'yaml'
+require 'sinatra'
 
-class Config
-  attr_reader :server
-
-  def initialize(file = YAML.load_file("config.yml"))
-    @base_url = file["server"]
-  end
-
-  def uri
-    URI("#{base_url}".strip)
-  end
-
-end
+set :logging, true
+set :bind, '127.0.0.1'
+set :port, 4567
+set :dump_errors, false
+set :environment, :production
