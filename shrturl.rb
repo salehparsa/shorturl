@@ -1,19 +1,6 @@
 require 'sinatra'
 require 'redis'
-require 'yaml'
-
-class Config
-  attr_reader :server
-
-  def initialize(file = YAML.load_file("config.yml"))
-    @base_url = file["server"]
-  end
-
-  def uri
-    URI("#{base_url}".strip)
-  end
-
-end
+require 'addressable/uri'
 
 =begin
 class Shorten
@@ -24,6 +11,9 @@ class Shorten
     @config = config
   end
 =end
+  def encode_ascii(s)
+    Addressable::URI.parse(s).normalize.to_s
+  end
 
   redis = Redis.new
   helpers do
@@ -38,7 +28,8 @@ class Shorten
   post '/' do
       if params[:url] and not params[:url].empty?
         @shortcode = params[:context]
-          redis.setnx "links:#{@shortcode}", params[:url]
+        encode_url = encode_ascii (params[:url])
+          redis.setnx "links:#{@shortcode}", encode_url
         end
         erb :index
   end
