@@ -3,8 +3,6 @@ require 'redis'
 require 'addressable/uri'
 require './config.rb'
 
-#  serverUrl = Config.new.server_url
-
   helpers do
       include Rack::Utils
       alias_method :h, :escape_html

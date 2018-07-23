@@ -9,7 +9,3 @@ env:
 before_install:
   - gem update --system
   - gem --version
-
-script:
-  -redis-server
-  -ruby app.rb
