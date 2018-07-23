@@ -7,8 +7,11 @@ rvm:
 
 env:
   - DB=redis
-  
+
 before_install:
   - gem update --system
   - gem --version
   - gem install bundler
+
+install:
+  - bundle install
