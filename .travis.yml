@@ -15,3 +15,6 @@ before_install:
 
 install:
   - bundle install
+
+after_success:
+  - echo "YaY!"
