@@ -23,8 +23,8 @@ require './config.rb'
       @shortcode = params[:context]
         encode_url = encode_ascii (params[:url])
         redis.setnx "links:#{@shortcode}", encode_url
-      end
-        erb :index
+    end
+      erb :index
   end
 
   get '/:shortcode' do
