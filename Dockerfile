@@ -2,17 +2,14 @@ FROM ruby:2.3.7
 
 MAINTAINER salehp@gmail.com
 
-RUN apt-get update -qq && \
-    apt-get install -y build-essential && \
-    apt-get install -y net-tools
-
-RUN mkdir /app
 WORKDIR /app
-COPY Gemfile /app/Gemfile
-COPY Gemfile.lock /app/Gemfile.lock
-RUN bundle install
-COPY . /app
+ADD Gemfile /app/Gemfile
+ADD Gemfile.lock /app/Gemfile.lock
+RUN bundle install --system
 
-ENV PORT 4567
+ADD . /app
+RUN bundle install --system
+
 EXPOSE 4567
+
 CMD ["ruby", "app.rb"]

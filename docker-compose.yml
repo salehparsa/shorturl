@@ -3,6 +3,6 @@ services:
   app:
     build: .
     ports:
-     - "5000:5000"
+     - "4567:4567"
   redis:
     image: "redis:alpine"
