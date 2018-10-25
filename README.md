@@ -8,3 +8,8 @@ Yet another application to make your URL shorter.
 Clone this repository
 Bundle install
 ruby app.rb
+
+#### Docker build and Run
+1. Clone this repository
+2. Run `docker-compose build`
+3. Run the container `docker-compose up -d`

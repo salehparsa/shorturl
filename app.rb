@@ -8,7 +8,7 @@ require './config.rb'
       alias_method :h, :escape_html
   end
 
-  redis = Redis.new
+  redis = Redis.new(host: "redis", port: 6379)
 
   def encode_ascii(s)
       Addressable::URI.parse(s).normalize.to_s
